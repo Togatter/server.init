@@ -1,0 +1,16 @@
+---
+- name: install nrpe
+  yum: name={{ item }}
+  with_items:
+    - nrpe
+    - nagios-plugins-nrpe
+    - nagios-plugins-all
+
+
+- name: template setting - nrpe.cfg
+  template: src=nrpe.cfg dest=/etc/nagios/nrpe.cfg
+
+- name: set chkconfig nrpe
+  shell: chkconfig --level 356 nrpe on
+
+

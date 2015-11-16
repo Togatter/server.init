@@ -1,0 +1,13 @@
+---
+- name: ntp install
+  yum: name={{ item }} state=installed
+  with_items:
+    - bind-utils 
+    - ntp
+
+- name: set chkconfig
+  shell: chkconfig --level 356 ntpd on
+
+- name: template setting - /etc/ntp.conf
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+

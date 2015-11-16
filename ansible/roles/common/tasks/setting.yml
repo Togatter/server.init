@@ -1,0 +1,24 @@
+---
+- name: modify hostname command
+  command: /bin/hostname {{ COMMON_HOSTNAME }}
+#  when: hostname_mod_flag.rc != 0
+
+- name: modify file - network config file
+  replace: dest=/etc/sysconfig/network regexp='^HOSTNAME=.*' replace=HOSTNAME={{ COMMON_HOSTNAME }}
+
+- name: modify file - ifcfg-eth0 config file
+  #replace: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 regexp='^DNS1=.*' replace=DNS1={{ DNS1_SERVER }}
+  lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 regexp='^DNS1=.*' line=DNS1={{ DNS1_SERVER }}
+
+- name: modify file - ifcfg-eth1 config file
+  lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth1 regexp='^DNS1=.*' line=DNS1={{ DNS1_SERVER }}
+
+#- name: group modify - gkadmin
+#  shell: usermod -g {{ HTTPD_GROUP }} {{ DEFAULT_USER }}
+
+- name: timezone modify - Asia/Tokyo
+  copy: src=/usr/share/zoneinfo/Asia/Tokyo dest=/etc/localtime owner=root group=root
+
+#- name: env LANG modify - ja_JP.UTF-8
+#  shell: sed -i "s/^LANG=.*/LANG=\"ja_JP.UTF-8\"/" /etc/sysconfig/i18n
+

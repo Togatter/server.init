@@ -1,0 +1,12 @@
+boxes
+data
+gems
+rgloader
+tmp
+virtualbox
+insecure_private_key
+plugins.json
+setup_version
+repository/Vagrantfile.*
+ansible/*.yml
+ansible/host_vars/*.yml

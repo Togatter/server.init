@@ -1,0 +1,13 @@
+- name: be sure common packages are installed
+  yum: name={{ item }} state=installed
+  with_items:
+   - vim
+   - tmux
+   - git
+   - man
+   - gcc
+   - bind-utils
+   - ntp
+   - wget
+   - libcurl-devel
+   - epel-release
