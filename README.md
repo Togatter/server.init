@@ -7,7 +7,6 @@
 - VirtualBox
 - Ansible
 - ShellScript(実行コマンド)
--- /opt/vm/script/bin/server.init.sh
 
 ## 説明
 
@@ -17,5 +16,5 @@ server.init.shを使用し、仮想サーバを作成する
 ## ヘルプ
 
 ```
-/opt/vm/script/bin/server.init.sh -h
+server.init.sh -h
 ```
